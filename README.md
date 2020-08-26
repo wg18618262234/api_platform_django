@@ -15,6 +15,7 @@
 安装依赖：`pip install -r requirments.txt`
 
 初始化项目：`python manage.py makemigrations`
+
 检查项目：`python manage.py migrate`
 
 启动项目：`python manage.py runserver`
