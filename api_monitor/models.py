@@ -7,13 +7,25 @@ class API(models.Model):
     name = models.CharField(max_length=200)
     url = models.CharField(max_length=200)
     method = models.CharField(max_length=200)
-    query = models.CharField(max_length=200)
+    params = models.CharField(max_length=200)
     body = models.CharField(max_length=200)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return {'name':self.name}
+        return {'name': self.name}
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'url': self.url,
+            'method': self.method,
+            'params': self.params,
+            'body': self.body,
+            'create_time': self.create_time,
+            'update_time': self.update_time,
+        }
 
 
 class Monitor(models.Model):
