@@ -13,7 +13,7 @@ class API(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return {'name':self.name}
 
 
 class Monitor(models.Model):
@@ -36,4 +36,4 @@ class RequestLog(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return
+        return self.api_id
