@@ -14,8 +14,16 @@
 
 安装依赖：`pip install -r requirments.txt`
 
-初始化项目：`python manage.py makemigrations`
+为模型生成迁移文件：`python manage.py makemigrations ApiMonitorConfig`
 
-检查项目：`python manage.py migrate`
+查看迁移命令的sql：`python manage.py sqlmigrate api_monitor 0001`
+
+应用数据库迁移：`python manage.py migrate`
+
+检查项目问题：`python manage.py check`
 
 启动项目：`python manage.py runserver`
+
+启用shell模式：`python manage.py shell`
+
+创建admin登录账号：`python manage.py createsuperuser`
