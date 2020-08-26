@@ -25,7 +25,7 @@ def api_update(request):
 @require_POST
 def api_delete(request):
     data_dict = json.loads(request.body)
-    API.objects.filter(id=data_dict.pop('id')).delete()
+    API.objects.filter(id=data_dict.get('id')).delete()
     return JsonResponse({"code": "1"})
 
 
