@@ -37,6 +37,15 @@ class Monitor(models.Model):
     def __str__(self):
         return self.name
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'api_id': self.api_id,
+            'create_time': self.create_time,
+            'update_time': self.update_time,
+        }
+
 
 class RequestLog(models.Model):
     status_code = models.BigIntegerField()
@@ -49,3 +58,14 @@ class RequestLog(models.Model):
 
     def __str__(self):
         return self.api_id
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'api_id': self.api_id,
+            'status_code': self.status_code,
+            'request': self.request,
+            'response': self.response,
+            'create_time': self.create_time,
+            'update_time': self.update_time,
+        }
