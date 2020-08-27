@@ -3,17 +3,21 @@ django文档：
 https://docs.djangoproject.com/
 https://docs.djangoproject.com/zh-hans/3.1/topics/
 ##开发过程：
-`python version : 3.8.2`
+`python version : 3.7.9`
 
-安装依赖：`python3.8 -m pip install Django`
+安装依赖：`python3.7 -m pip install Django`
 
 创建项目：`django-admin startproject api_platform_django`
 
 创建app：`python manage.py startapp api_monitor`
 
-创建虚拟环境：`python -m venv ./venv`
+创建虚拟环境：`virtualenv venv`
 
 激活虚拟环境：`. venv/bin/active`
+
+pip换源：
+`pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/`
+`pip config set install.trusted-host mirrors.aliyun.com`
 
 安装依赖：`pip install -r requirments.txt`
 
