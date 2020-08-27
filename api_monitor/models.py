@@ -13,7 +13,7 @@ class API(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return {'name': self.name}
+        return str(self.name)
 
     def to_dict(self):
         return {
@@ -35,13 +35,12 @@ class Monitor(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
-            'api_id': self.api_id,
             'create_time': self.create_time,
             'update_time': self.update_time,
         }
