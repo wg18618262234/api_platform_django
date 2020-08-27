@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api_monitor.apps.ApiMonitorConfig'
+    'api_monitor.apps.ApiMonitorConfig',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
