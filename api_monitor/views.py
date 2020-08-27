@@ -40,19 +40,29 @@ def api_get_list(request):
 
 @require_POST
 def monitor_add(request):
-    return JsonResponse({"hello": "worlds"})
+    data_dict = json.loads(request.body)
+    Monitor.objects.create(**data_dict)
+    return JsonResponse({"code": "1"})
 
 
 @require_POST
 def monitor_update(request):
-    return JsonResponse({"hello": "worlds"})
+    data_dict = json.loads(request.body)
+    Monitor.objects.filter(id=data_dict.pop('id')).update(**data_dict)
+    return JsonResponse({"code": "1"})
 
 
 @require_POST
 def monitor_delete(request):
-    return JsonResponse({"hello": "worlds"})
+    data_dict = json.loads(request.body)
+    Monitor.objects.filter(id=data_dict.get('id')).delete()
+    return JsonResponse({"code": "1"})
 
 
 @require_GET
 def monitor_get_list(request):
-    return JsonResponse({"hello": "worlds"})
+    monitor = Monitor.objects.all()
+    result = []
+    for i in monitor:
+        result.append(i)
+    return JsonResponse({"result": result})
