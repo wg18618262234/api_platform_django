@@ -71,14 +71,14 @@ def monitor_get_list(request):
     from api_monitor import tasks
 
     tasks.monitor.delay(4)
-    # monitor = Monitor.objects.all()
-    # result = []
-    # for i in monitor:
-    #     api = []
-    #     for j in i.api.all():
-    #         api.append(j.to_dict())
-    #     data = i.to_dict().copy()
-    #     data['api_list'] = api.copy()
-    #     result.append(data)
-    # return JsonResponse({"result": result})
-    return JsonResponse({"result": 'result'})
+    monitor = Monitor.objects.all()
+    result = []
+    for i in monitor:
+        api = []
+        for j in i.api.all():
+            api.append(j.to_dict())
+        data = i.to_dict().copy()
+        data['api_list'] = api.copy()
+        result.append(data)
+    return JsonResponse({"result": result})
+    # return JsonResponse({"result": 'result'})
