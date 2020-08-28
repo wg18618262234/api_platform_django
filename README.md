@@ -15,9 +15,7 @@ https://docs.djangoproject.com/zh-hans/3.1/topics/
 
 激活虚拟环境：`. venv/bin/active`
 
-pip换源：
-`pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/`
-`pip config set install.trusted-host mirrors.aliyun.com`
+pip换源：`pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/`,`pip config set install.trusted-host mirrors.aliyun.com`
 
 安装依赖：`pip install -r requirments.txt`
 
@@ -35,5 +33,6 @@ pip换源：
 
 创建admin登录账号：`python manage.py createsuperuser`
 
+启动redis：`redis-server`
+
 启动celery：`celery -A api_platform_django worker -B -l info`
-需要启动redis
