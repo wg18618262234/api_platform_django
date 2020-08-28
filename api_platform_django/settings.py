@@ -122,7 +122,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -205,3 +205,11 @@ LOGGING = {
         },
     }
 }
+
+# celery beat配置
+# CELERY_ENABLE_UTC = False
+CELERY_TIMEZONE = TIME_ZONE
+DJANGO_CELERY_BEAT_TZ_AWARE = False
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/1'
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/2'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

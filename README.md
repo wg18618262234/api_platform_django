@@ -34,3 +34,6 @@ pip换源：
 启用shell模式：`python manage.py shell`
 
 创建admin登录账号：`python manage.py createsuperuser`
+
+启动celery：`celery -A api_platform_django worker -B -l info`
+需要启动redis
