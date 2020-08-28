@@ -15,9 +15,9 @@ https://docs.djangoproject.com/zh-hans/3.1/topics/
 
 激活虚拟环境：`. venv/bin/active`
 
-pip换源：
-`pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/`
-`pip config set install.trusted-host mirrors.aliyun.com`
+pip换源：   
+`pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/`    
+`pip config set install.trusted-host mirrors.aliyun.com`    
 
 安装依赖：`pip install -r requirments.txt`
 
