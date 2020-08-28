@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api_monitor.apps.ApiMonitorConfig',
+    'django_celery_results',
     'django_celery_beat',
 ]
 
@@ -206,10 +207,11 @@ LOGGING = {
     }
 }
 
+
 # celery beat配置
 # CELERY_ENABLE_UTC = False
 CELERY_TIMEZONE = TIME_ZONE
 DJANGO_CELERY_BEAT_TZ_AWARE = False
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/1'
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379/2'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'redis://localhost'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

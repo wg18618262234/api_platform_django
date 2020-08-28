@@ -1,10 +1,10 @@
 from __future__ import absolute_import
 from celery import shared_task
 import requests
-import logging
 import json
-
-logger = logging.getLogger('log')
+from .models import API
+from celery.utils.log import get_task_logger
+import logging
 
 
 @shared_task
@@ -13,23 +13,34 @@ def add(x: int, y: int) -> int:
 
 
 @shared_task
-def request(method: str, url: str, headers: dict = None, params: dict = None, data: dict = None) -> dict:
-    logging.info('url:'+str(url))
-    response = requests.request(
-        method=method,
-        url=url,
-        params=params,
-        data=data,
-        headers=headers
-    )
+def monitor(*api_id):
+    api = API.objects.filter(id__in=api_id)
+    data = []
+    for i in api:
+        req_data = i.to_dict()
+        try:
+            response = requests.request(
+                method=req_data.get('method'),
+                url=req_data.get('url'),
+                params=req_data.get('params'),
+                data=req_data.get('data'),
+                headers=req_data.get('headers')
+            )
+            logging.info(response.text)
+            data.append({
+                "request": {
+                    "method": req_data.get('method'),
+                    "url": req_data.get('url'),
+                    "params": req_data.get('params'),
+                    "body": req_data.get('data'),
+                },
+                "response": {
+                    "status_code": response.status_code,
+                    "response_text": response.text,
+                }
+            })
+        except Exception as e:
+            logging.error(e)
     return {
-        "request": {
-            "method": method,
-            "url": url,
-            "body": data
-        },
-        "response": {
-            "status_code": response.status_code,
-            "response_text": response.text
-        }
+        'result': data
     }
