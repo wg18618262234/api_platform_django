@@ -210,8 +210,15 @@ LOGGING = {
 
 # celery beat配置
 # CELERY_ENABLE_UTC = False
-CELERY_TIMEZONE = TIME_ZONE
 DJANGO_CELERY_BEAT_TZ_AWARE = False
+# celery结果返回，可用于跟踪结果
 CELERY_RESULT_BACKEND = 'django-db'
+# celery中间人 redis://redis服务所在的ip地址:端口/数据库号
 CELERY_BROKER_URL = 'redis://localhost'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+# celery内容等消息的格式设置
+CELERY_ACCEPT_CONTENT = ['application/json', ]
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+# celery时区设置，使用settings中TIME_ZONE同样的时区
+CELERY_TIMEZONE = TIME_ZONE

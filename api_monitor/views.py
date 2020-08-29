@@ -4,6 +4,7 @@ from django.views.decorators.http import require_GET, require_POST
 from .models import API, Monitor, RequestLog
 import logging
 import json
+from django_celery_beat.models import PeriodicTask,IntervalSchedule,CrontabSchedule,SolarSchedule,ClockedSchedule
 # Create your views here.
 logger = logging.getLogger('log')
 
@@ -41,10 +42,11 @@ def api_get_list(request):
 @require_POST
 def monitor_add(request):
     data_dict = json.loads(request.body)
-    api_id = data_dict.pop('api_id')
-    apis = API.objects.filter(id__in=api_id)
-    monitor = Monitor.objects.create(**data_dict)
-    monitor.api.add(*apis)
+    periodicTask=PeriodicTask.objects.create(**data_dict)
+    # api_id = data_dict.pop('api_id')
+    # apis = API.objects.filter(id__in=api_id)
+    # monitor = Monitor.objects.create(**data_dict)
+    # monitor.api.add(*apis)
     return JsonResponse({"code": "1"})
 
 

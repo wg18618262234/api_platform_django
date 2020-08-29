@@ -40,3 +40,5 @@ pip换源：
 启动redis：`redis-server`
 
 启动celery：`celery -A api_platform_django worker -B -l info`
+
+启动flower：`flower --broker=redis://localhost --address=localhost --port=5555`
