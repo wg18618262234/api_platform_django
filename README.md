@@ -31,11 +31,11 @@ pip换源：
 
 检查项目问题：`python3.7 manage.py check`
 
-启动项目：`python3.7 manage.py runserver`
-
 启用shell模式：`python3.7 manage.py shell`
 
 创建admin登录账号：`python3.7 manage.py createsuperuser`
+
+启动项目：`python3.7 manage.py runserver`
 
 启动redis：`redis-server`
 
