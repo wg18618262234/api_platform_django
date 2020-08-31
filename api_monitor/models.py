@@ -13,6 +13,8 @@ class API(models.Model):
         max_length=200, help_text="使用dict类型，例如：{\"key\":\"value\"}", null=True, blank=True)
     body = models.CharField(
         max_length=200, help_text="使用dict类型，例如：{\"key\":\"value\"}", null=True, blank=True)
+    headers = models.CharField(
+        max_length=200, help_text="使用dict类型，例如：{\"key\":\"value\"}", null=True, blank=True)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
