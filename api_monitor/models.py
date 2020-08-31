@@ -5,8 +5,9 @@ from django.db import models
 
 class API(models.Model):
     # verbose_name = "接口信息表"
-    name = models.CharField(max_length=200)
-    url = models.CharField(max_length=200，help_text="填写url地址，例如：https://api-primary-test.yangcong345.com/primary_account/classCourse/class/getGrade")
+    name = models.CharField(max_length=200, help_text="接口名称")
+    url = models.CharField(
+        max_length=200, help_text="填写url地址，例如：https://api-primary-test.yangcong345.com/primary_account/classCourse/class/getGrade")
     method = models.CharField(max_length=200, help_text="填写请求类型，例如：POST")
     params = models.CharField(
         max_length=200, help_text="使用dict类型，例如：{\"key\":\"value\"}", null=True, blank=True)
