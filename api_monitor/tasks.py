@@ -18,29 +18,33 @@ def monitor(*api_id):
     data = []
     for i in api:
         req_data = i.to_dict()
-        try:
-            response = requests.request(
-                method=req_data.get('method'),
-                url=req_data.get('url'),
-                params=req_data.get('params'),
-                data=req_data.get('data'),
-                headers=req_data.get('headers')
-            )
-            logging.info(response.text)
-            data.append({
-                "request": {
-                    "method": req_data.get('method'),
-                    "url": req_data.get('url'),
-                    "params": req_data.get('params'),
-                    "body": req_data.get('data'),
-                },
-                "response": {
-                    "status_code": response.status_code,
-                    "response_text": response.text,
-                }
-            })
-        except Exception as e:
-            logging.error(e)
+        # try:
+        response = requests.request(
+            method=req_data.get('method'),
+            url=req_data.get('url'),
+            params=req_data.get('params'),
+            data=req_data.get('data'),
+            headers=req_data.get('headers')
+        )
+        logging.info(response.text)
+        data.append({
+            "request": {
+                "method": req_data.get('method'),
+                "url": req_data.get('url'),
+                "params": req_data.get('params'),
+                "body": req_data.get('data'),
+            },
+            "response": {
+                "status_code": response.status_code,
+                "response_text": response.text,
+            }
+        })
+        assert response.status_code == 200
+        # except Exception as e:
+        #     logging.error(e)
+        #     return{
+        #         'result': str(e)
+        #     }
     return {
         'result': data
     }
